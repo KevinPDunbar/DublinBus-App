@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>viewBusStop</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+      <ion-icon class="isFavorite" *ngIf="isFavorite === true" ios="md-star" md="md-star"></ion-icon>
+      <ion-icon class="isNotFavorite" *ngIf="isFavorite === false" ios="md-star" md="md-star"></ion-icon>
+
+      <p *ngIf="isFavorite === true">Is Favorite</p>
+      <p *ngIf="isFavorite === false">Is Not Favorite</p>
+
+      <p>{{fullname}}</p>
+      <span *ngFor="let operator of operators"> {{operator}} </span>
+
+      <p *ngFor="let errorCode of errorCodes">
+          <span *ngIf="errorCode.errorCode === '0'">Request Ok</span> 
+          <span *ngIf="errorCode.errorCode === '1'">No Results Found</span>
+          <span *ngIf="errorCode.errorCode === '2'">Missing Parameters</span>
+          <span *ngIf="errorCode.errorCode === '3'">Invalid Parameters</span>
+          <span *ngIf="errorCode.errorCode === '4'">The Service is Experiencing Scheduled Downtime</span>
+          <span *ngIf="errorCode.errorCode === '5'">An Unexpected System Error Occurred</span>
+      </p>
+      
+    <button ion-button (click)="addToFavorites()">Add to Favorites</button>
+
+    <button ion-button (click)="removeFromFavorites()">Remove from Favorites</button>
+
+    <ion-list>
+        <ion-item *ngFor="let buse of buses">
+         <p>{{ buse.route }}</p> 
+         <p *ngIf="buse.duetime === 'Due'">{{ buse.duetime }}</p>
+         <p *ngIf="buse.duetime <= 1">{{ buse.duetime }} min</p>
+         <p *ngIf="buse.duetime > 1">{{ buse.duetime }} mins</p>
+         
+        </ion-item>  
+      </ion-list>
+
+</ion-content>
