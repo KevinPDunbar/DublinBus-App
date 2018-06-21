@@ -23,7 +23,7 @@
       <span *ngFor="let operator of operators"> {{operator}} </span>
 
       <p *ngFor="let errorCode of errorCodes">
-          <span *ngIf="errorCode.errorCode === '0'">Request Ok</span> 
+          <!--<span *ngIf="errorCode.errorCode === '0'">Request Ok</span> -->
           <span *ngIf="errorCode.errorCode === '1'">No Results Found</span>
           <span *ngIf="errorCode.errorCode === '2'">Missing Parameters</span>
           <span *ngIf="errorCode.errorCode === '3'">Invalid Parameters</span>

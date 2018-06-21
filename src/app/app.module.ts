@@ -13,6 +13,7 @@ import { CalculateFarePage } from '../pages/calculate-fare/calculate-fare';
 
 import { HttpModule} from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
     StatusBar,
     SplashScreen,
     NativeStorage,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BusStopsProvider
   ]
 })
 export class AppModule {}

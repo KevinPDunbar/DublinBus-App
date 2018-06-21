@@ -6,6 +6,7 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { ViewBusStopPage } from '../view-bus-stop/view-bus-stop';
+import { BusStopsProvider } from '../../providers/bus-stops/bus-stops';
 
 /**
  * Generated class for the AllBusStopsPage page.
@@ -25,7 +26,7 @@ export class AllBusStopsPage {
   busStops = [];
   errorCodes = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public busProvider: BusStopsProvider) {
   }
 
   ionViewDidLoad() {
@@ -37,7 +38,21 @@ export class AllBusStopsPage {
   {
     console.log("getting bus stops...");
 
-    this.http.get('https://data.smartdublin.ie/cgi-bin/rtpi/busstopinformation?stopid=')
+    let data = this.busProvider.getBusStops();
+
+    if(data)
+    {
+      for(let i=0; i<data.numberofresults; i++)
+          {
+            this.busStops.push(data.results[i]);
+          }
+    }
+
+    //this.busStops.push(this.busProvider.getBusStops().results);
+
+    console.log(this.busProvider.getBusStops());
+
+    /*this.http.get('https://data.smartdublin.ie/cgi-bin/rtpi/busstopinformation?stopid=')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -50,7 +65,7 @@ export class AllBusStopsPage {
           {
             this.busStops.push(data.results[i]);
           }
-        });
+        }); */
   }
 
   goToBusStopPage(stopId, fullname, operators)
