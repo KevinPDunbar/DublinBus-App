@@ -6,6 +6,7 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { NativeStorage } from '@ionic-native/native-storage';
 
+import { ViewStopMapPage } from '../view-stop-map/view-stop-map';
 /**
  * Generated class for the ViewBusStopPage page.
  *
@@ -23,6 +24,8 @@ export class ViewBusStopPage {
   stopid;
   fullname;
   operators;
+  latitude;
+  longitude;
   data: any;
   buses = [];
   errorCodes = [];
@@ -34,8 +37,12 @@ export class ViewBusStopPage {
    this.stopid =  this.navParams.get('stopid');  
    this.fullname =  this.navParams.get('fullname');   
    this.operators =  this.navParams.get('operators'); 
+   this.latitude = this.navParams.get('latitude');
+   this.longitude = this.navParams.get('longitude');
    console.log("Passed in Id: " + this.stopid);
    console.log("Passed in fullname: " + this.fullname);
+   console.log("Passed in lat: " + this.latitude);
+   console.log("Passed in long: " + this.longitude);
    //console.log("Passed in operators: " + this.operators[0].routes);
    //this.operators = this.operators[0].routes;
    this.getStopInformation();
@@ -110,7 +117,7 @@ export class ViewBusStopPage {
   addToFavorites()
   {
     console.log("Adding to favorites, operators: " + this.operators);
-    this.favorites.push({"stopid": this.stopid, "fullname": this.fullname, "operators": this.operators});
+    this.favorites.push({"stopid": this.stopid, "fullname": this.fullname, "operators": this.operators, "latitude": this.latitude, "longitude": this.longitude});
     
     this.checkFavorites();
 
@@ -137,6 +144,11 @@ export class ViewBusStopPage {
         () => console.log('Stored item!'),
         error => console.error('Error storing item', error)
       );
+  }
+
+  viewOnMap()
+  {
+    this.navCtrl.push(ViewStopMapPage, {fullname: this.fullname, stopid: this.stopid, latitude: this.latitude, longitude: this.longitude});
   }
 
 }

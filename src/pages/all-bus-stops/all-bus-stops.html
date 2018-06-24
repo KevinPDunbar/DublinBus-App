@@ -17,7 +17,7 @@
 
     <ion-list [virtualScroll]="busStops">
 
-        <ion-item *virtualItem="let busStop" (click)="goToBusStopPage(busStop.stopid, busStop.fullname, busStop.operators)">
+        <ion-item *virtualItem="let busStop" (click)="goToBusStopPage(busStop.stopid, busStop.fullname, busStop.operators, busStop.latitude, busStop.longitude)">
             <p>{{ busStop.stopid }}</p> 
             <p>{{ busStop.fullname }}</p>
         </ion-item>

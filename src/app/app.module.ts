@@ -10,9 +10,12 @@ import { AllBusStopsPage } from '../pages/all-bus-stops/all-bus-stops';
 import { ViewBusStopPage } from '../pages/view-bus-stop/view-bus-stop';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { CalculateFarePage } from '../pages/calculate-fare/calculate-fare';
+import { StopMapPage } from '../pages/stop-map/stop-map';
+import { ViewStopMapPage } from '../pages/view-stop-map/view-stop-map';
 
 import { HttpModule} from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { GoogleMaps } from '@ionic-native/google-maps';
 import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
 
 @NgModule({
@@ -22,7 +25,9 @@ import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
     AllBusStopsPage,
     ViewBusStopPage,
     FavoritesPage,
-    CalculateFarePage
+    CalculateFarePage,
+    StopMapPage,
+    ViewStopMapPage
   ],
   imports: [
     BrowserModule,
@@ -36,12 +41,15 @@ import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
     AllBusStopsPage,
     ViewBusStopPage,
     FavoritesPage,
-    CalculateFarePage
+    CalculateFarePage,
+    StopMapPage,
+    ViewStopMapPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     NativeStorage,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BusStopsProvider
   ]

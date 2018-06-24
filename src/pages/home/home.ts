@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import { AllBusStopsPage } from '../all-bus-stops/all-bus-stops';
 import { FavoritesPage } from '../favorites/favorites';
 import { CalculateFarePage } from '../calculate-fare/calculate-fare';
+import { StopMapPage } from '../stop-map/stop-map';
 
 @Component({
   selector: 'page-home',
@@ -45,6 +46,11 @@ export class HomePage {
   goToCalculateFare()
   {
     this.navCtrl.push(CalculateFarePage);
+  }
+
+  goToMap()
+  {
+    this.navCtrl.push(StopMapPage);
   }
 
 

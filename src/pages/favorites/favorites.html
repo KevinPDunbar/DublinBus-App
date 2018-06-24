@@ -17,7 +17,7 @@
 
     <ion-list [virtualScroll]="favorites">
 
-    <ion-item *virtualItem="let favorite" (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators)">
+    <ion-item *virtualItem="let favorite" (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators, favorite.latitude, favorite.longitude)">
         <p>{{ favorite.stopid }}</p> 
         <p>{{ favorite.fullname }}</p>
     </ion-item>

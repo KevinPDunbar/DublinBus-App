@@ -30,10 +30,6 @@ export class FavoritesPage {
       error => console.error(error)
     );
 
-    if(this.favorites)
-    {
-
-    }
 
   }
 
@@ -41,13 +37,13 @@ export class FavoritesPage {
     console.log('ionViewDidLoad FavoritesPage');
   }
 
-  goToBusStopPage(stopId, fullname, operators)
+  goToBusStopPage(stopId, fullname, operators, latitude, longitude)
   {
     console.log("StopId: " + stopId);
     console.log("fullname: " + fullname);
     console.log("operators: " + operators);
 
-    this.navCtrl.push(ViewBusStopPage, {stopid: stopId, fullname: fullname, operators: operators});
+    this.navCtrl.push(ViewBusStopPage, {stopid: stopId, fullname: fullname, operators: operators, latitude: latitude, longitude: longitude});
   }
 
 
