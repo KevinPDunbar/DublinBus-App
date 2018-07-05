@@ -16,6 +16,7 @@ import { ViewStopMapPage } from '../pages/view-stop-map/view-stop-map';
 import { HttpModule} from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
     SplashScreen,
     NativeStorage,
     GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BusStopsProvider
   ]
