@@ -7,18 +7,14 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
 
-  <button (click)="test()">TEst</button>
+  <button ion-button (click)="goToAllBusStopsPage()">View All Bus Stops</button>
 
-  <button (click)="goToAllBusStopsPage()">View All Bus Stops</button>
+  <button ion-button (click)="goToFavoritesPage()">Go to favorites</button>
 
-  <button (click)="goToFavoritesPage()">Go to favorites</button>
+  <button ion-button (click)="goToCalculateFare()">Go to calculate fare</button>
 
-  <button (click)="goToCalculateFare()">Go to calculate fare</button>
+  <button ion-button (click)="goToMap()">Go to Map</button>
 
-  <button (click)="goToMap()">Go to Map</button>
+  <button ion-button (click)="goToNews()">News</button>
 </ion-content>

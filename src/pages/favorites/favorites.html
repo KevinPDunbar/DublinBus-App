@@ -17,10 +17,16 @@
 
     <ion-list [virtualScroll]="favorites">
 
-    <ion-item *virtualItem="let favorite" (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators, favorite.latitude, favorite.longitude)">
-        <p>{{ favorite.stopid }}</p> 
-        <p>{{ favorite.fullname }}</p>
+    <ion-item *virtualItem="let favorite">
+        <section (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators, favorite.latitude, favorite.longitude)">
+          <p>{{ favorite.stopid }}</p> 
+          <p>{{ favorite.fullname }}</p>
+          <p *ngIf="favorite.nickname.length >= 1">Nickname: {{favorite.nickname}}</p>
+      </section>
+        <button ion-btn (click)="editNickname(favorite.stopid)">Edit Nickname</button>
     </ion-item>
+
+    
   
   </ion-list>
 

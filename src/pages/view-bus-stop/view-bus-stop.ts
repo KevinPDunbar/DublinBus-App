@@ -117,7 +117,7 @@ export class ViewBusStopPage {
   addToFavorites()
   {
     console.log("Adding to favorites, operators: " + this.operators);
-    this.favorites.push({"stopid": this.stopid, "fullname": this.fullname, "operators": this.operators, "latitude": this.latitude, "longitude": this.longitude});
+    this.favorites.push({"stopid": this.stopid, "fullname": this.fullname, "operators": this.operators, "latitude": this.latitude, "longitude": this.longitude, "nickname": ''});
     
     this.checkFavorites();
 

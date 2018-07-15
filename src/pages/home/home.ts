@@ -9,6 +9,7 @@ import { AllBusStopsPage } from '../all-bus-stops/all-bus-stops';
 import { FavoritesPage } from '../favorites/favorites';
 import { CalculateFarePage } from '../calculate-fare/calculate-fare';
 import { StopMapPage } from '../stop-map/stop-map';
+import { NewsPage } from '../news/news';
 
 @Component({
   selector: 'page-home',
@@ -51,6 +52,11 @@ export class HomePage {
   goToMap()
   {
     this.navCtrl.push(StopMapPage);
+  }
+
+  goToNews()
+  {
+    this.navCtrl.push(NewsPage);
   }
 
 

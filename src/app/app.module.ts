@@ -18,6 +18,9 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
+import { NewsPage } from '../pages/news/news';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,11 +31,13 @@ import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
     FavoritesPage,
     CalculateFarePage,
     StopMapPage,
-    ViewStopMapPage
+    ViewStopMapPage,
+    NewsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -44,7 +49,8 @@ import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
     FavoritesPage,
     CalculateFarePage,
     StopMapPage,
-    ViewStopMapPage
+    ViewStopMapPage,
+    NewsPage
   ],
   providers: [
     StatusBar,
