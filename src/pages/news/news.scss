@@ -4,14 +4,28 @@ page-news {
         display: none;
     }
 
-    .item-description {
+    .item-container {
+        //box-shadow: none;
+        overflow: hidden;
+        z-index: 5;
+    }
 
-    }    
+    .item-description {
+        animation-name: slide;
+        animation-duration: 500ms;
+        overflow: hidden;
+        margin-top: 10px;
+        z-index: 0;
+    }
+    
+    @keyframes slide {
+        0%   { opacity: 0; margin-top: -100px }
+        100% { opacity: 1; margin-top: 10px; }
+      }
 
     ion-card {
         width: 100% !important;
-        margin: 0 !important;
-        margin-bottom: 50px !important;  
+        margin: 0 !important; 
     }
 
 }

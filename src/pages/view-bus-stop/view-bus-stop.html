@@ -2,9 +2,11 @@
 
   <ion-navbar>
     <ion-title>{{fullname}}</ion-title>
+    <ion-icon (click)="removeFromFavorites()" class="isFavorite favorite-icon" *ngIf="isFavorite === true" ios="md-heart" md="md-heart"></ion-icon>
+    <ion-icon (click)="addToFavorites()" class="isNotFavorite favorite-icon" *ngIf="isFavorite === false" ios="md-heart" md="md-heart"></ion-icon>
   </ion-navbar>
 
-  <section class="pageHeader">
+  <!--<section class="pageHeader">
       <ion-icon class="isFavorite" *ngIf="isFavorite === true" ios="md-star" md="md-star"></ion-icon>
       <ion-icon class="isNotFavorite" *ngIf="isFavorite === false" ios="md-star" md="md-star"></ion-icon>
 
@@ -12,7 +14,7 @@
       <span *ngFor="let operator of operators"> {{operator}} </span>
 
       <p *ngFor="let errorCode of errorCodes">
-          <!--<span *ngIf="errorCode.errorCode === '0'">Request Ok</span> -->
+          <span *ngIf="errorCode.errorCode === '0'">Request Ok</span>
           <span *ngIf="errorCode.errorCode === '1'">No Results Found</span>
           <span *ngIf="errorCode.errorCode === '2'">Missing Parameters</span>
           <span *ngIf="errorCode.errorCode === '3'">Invalid Parameters</span>
@@ -25,33 +27,38 @@
 
       <ion-icon (click)="addToFavorites()"name="ios-heart-outline"></ion-icon>
 
-    
-
-   <!-- <button ion-button (click)="removeFromFavorites()">Remove from Favorites</button> -->
-
-  </section>
+  </section> -->
 
 </ion-header>
 
 
 <ion-content no-padding>
 
-
-   
-
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content>
-      </ion-refresher-content>
-    </ion-refresher>
-
-    <ion-list>
-        <ion-item *ngFor="let buse of buses">
-         <p>{{ buse.route }}</p> 
-         <p *ngIf="buse.duetime === 'Due'">{{ buse.duetime }}</p>
-         <p *ngIf="buse.duetime <= 1">{{ buse.duetime }} min</p>
-         <p *ngIf="buse.duetime > 1">{{ buse.duetime }} mins</p>
-         
-        </ion-item>  
-    </ion-list>
+<section class="stop-information">
+ <h1>ovniongobngoibngion</h1>
+ <h1><span *ngFor="let operator of operators"> {{operator}} </span></h1>
+ <ion-icon class="isFavorite" *ngIf="isFavorite === true" ios="md-star" md="md-star"></ion-icon>
+ <ion-icon class="isNotFavorite" *ngIf="isFavorite === false" ios="md-star" md="md-star"></ion-icon>
+</section>
+    
 
 </ion-content>
+
+<ion-content class="real-time-information">
+
+        <ion-refresher (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content>
+                </ion-refresher-content>
+              </ion-refresher>
+          
+              <ion-list>
+                  <ion-item *ngFor="let buse of buses">
+                   <p>{{ buse.route }}</p> 
+                   <p>{{buse.origin}} -> {{buse.destination}}</p>
+                   <p *ngIf="buse.duetime === 'Due'">{{ buse.duetime }}</p>
+                   <p *ngIf="buse.duetime <= 1">{{ buse.duetime }} min</p>
+                   <p *ngIf="buse.duetime > 1">{{ buse.duetime }} mins</p>
+                   
+                  </ion-item>  
+              </ion-list>
+ </ion-content>

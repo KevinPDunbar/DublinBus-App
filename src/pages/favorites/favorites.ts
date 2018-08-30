@@ -12,6 +12,8 @@ export class FavoritesPage {
 
   favorites = [];
 
+  canReorder: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public alertCtrl: AlertController) {
 
     this.nativeStorage.getItem('favorites')
@@ -91,6 +93,49 @@ export class FavoritesPage {
       }
     }
     
+  }
+
+  removeFavorite(stopId)
+  {
+    let stopToRemove = stopId;
+  
+    let updated = this.favorites.filter(function(el) {
+      return el.stopid !== stopToRemove;
+    });
+
+      this.favorites = updated;
+      this.nativeStorage.setItem('favorites', this.favorites)
+      .then(
+        () => console.log('Stored item!'),
+        error => console.error('Error storing item', error)
+      );
+  }
+
+  reorderItems(indexes) {
+    let element = this.favorites[indexes.from];
+    this.favorites.splice(indexes.from, 1);
+    this.favorites.splice(indexes.to, 0, element);
+
+    this.nativeStorage.setItem('favorites', this.favorites)
+      .then(
+        () => console.log('Stored item!'),
+        error => console.error('Error storing item', error)
+      );
+  }
+
+  toggleReorder() {
+
+    console.log("TOGGLE")
+    if(this.canReorder === true)
+    {
+      this.canReorder = false;
+      console.log("reorder false")
+    }
+    else if(this.canReorder === false)
+    {
+      this.canReorder = true;
+      console.log("reorder true");
+    }
   }
 
 }

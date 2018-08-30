@@ -8,6 +8,7 @@
 
   <ion-navbar>
     <ion-title>favorites</ion-title>
+    <ion-icon class="reorder-icon" (click)="toggleReorder()" name="md-list"></ion-icon>
   </ion-navbar>
 
 </ion-header>
@@ -15,16 +16,20 @@
 
 <ion-content padding>
 
-    <ion-list [virtualScroll]="favorites">
+    <ion-list reorder="{{canReorder}}" (ionItemReorder)="reorderItems($event)">
 
-    <ion-item *virtualItem="let favorite">
-        <section (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators, favorite.latitude, favorite.longitude)">
+    <ion-item-sliding #item *ngFor="let favorite of favorites">
+        <ion-item (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators, favorite.latitude, favorite.longitude)">
           <p>{{ favorite.stopid }}</p> 
           <p>{{ favorite.fullname }}</p>
-          <p *ngIf="favorite.nickname.length >= 1">Nickname: {{favorite.nickname}}</p>
-      </section>
+          <p *ngIf="favorite.nickname">Nickname: {{favorite.nickname}}</p>
+        </ion-item>
+        <ion-item-options class="item-options" side="right">
+            <button ion-button (click)="editNickname(favorite.stopid)">Nickname</button>
+            <button ion-button color="danger" (click)="removeFavorite(favorite.stopid)">Remove</button>
+          </ion-item-options>
         <button ion-btn (click)="editNickname(favorite.stopid)">Edit Nickname</button>
-    </ion-item>
+    </ion-item-sliding>
 
     
   

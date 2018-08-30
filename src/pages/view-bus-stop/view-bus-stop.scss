@@ -2,7 +2,15 @@ page-view-bus-stop {
 
     ion-content {
         padding-top: 0;
-        margin-top: -15px;
+    }
+
+    .stop-information {
+        //position: fixed;
+        //top: 0;
+    }
+
+    .real-time-information {
+        margin-top: 150px;
     }
 
     .isFavorite {
@@ -10,12 +18,19 @@ page-view-bus-stop {
     }
 
     .isNotFavorite {
-        color: blue !important;
+        color: gray !important;
     }
 
     .pageHeader {
         background-color: #2c3e50;
         color: #ffffff;
+    }
+
+    .favorite-icon {
+        position: absolute;
+        font-size: 2em;
+        right: 5%;
+        top: 25%;
     }
 
 }

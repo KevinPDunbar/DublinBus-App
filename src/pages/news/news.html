@@ -15,30 +15,13 @@
 
 <ion-content no-padding> 
 
-    <ion-card padding *ngFor="let newsItem of newsItems" (click)="toggleDetails(newsItem)"><ion-icon color="primary" item-right [name]="newsItem.icon"></ion-icon>
+    <ion-card class="item-container" padding *ngFor="let newsItem of newsItems" (click)="toggleDetails(newsItem)"><ion-icon color="primary" item-right [name]="newsItem.icon"></ion-icon>
       {{newsItem.title}}
-      <div style="transition: 2s linear;" class="item-description" *ngIf="newsItem.showDetails">
+      <div class="item-description" *ngIf="newsItem.showDetails">
       <p
         [innerHTML]="newsItem.description"> 
       </p>
       </div>
     </ion-card>
-
-
-    <ion-card *ngFor="let newsItem of newsItems">
-
-        <ion-card-header>
-          {{newsItem.title}}
-          {{newsItem.pubDate}}
-        </ion-card-header>
-      
-        <ion-card-content>
-          <section 
-            [innerHTML]="newsItem.description"> 
-
-          </section>
-        </ion-card-content>
-      
-      </ion-card>
 
 </ion-content>
