@@ -13,6 +13,18 @@ page-view-bus-stop {
         margin-top: 150px;
     }
 
+    .map-icon {
+        font-size: 2em;
+        float: right;
+        right: 5%;
+    }
+
+    .due-time {
+        float: right;
+        margin-top: -25px;
+        font-weight: bold;
+    }
+
     .isFavorite {
         color: red !important;
     }

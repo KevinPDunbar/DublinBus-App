@@ -26,6 +26,11 @@ export class AllBusStopsPage {
   busStops = [];
   errorCodes = [];
 
+  searchTerm: any = '';
+  searching: any = false;
+  resultsFound: any = true;
+  searchBusStops = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public busProvider: BusStopsProvider) {
   }
 
@@ -66,6 +71,43 @@ export class AllBusStopsPage {
             this.busStops.push(data.results[i]);
           }
         }); */
+  }
+
+  searchStops()
+  {
+    if(this.searchTerm.length < 1)
+    {
+      console.log("search term is less than 1");
+      this.resultsFound = true;
+      this.busStops= [];
+      this.getBusStops();
+    }
+    else
+    {
+      console.log("search term is over 1");
+      this.busStops = [];
+      this.searching = true;
+      if(!isNaN(this.searchTerm))
+      {
+        console.log("search is number");
+        this.busStops =  this.busProvider.searchStopsByRoute(this.searchTerm);
+      }else{
+        console.log("search is a string");
+        this.busStops =  this.busProvider.searchStops(this.searchTerm);
+      }
+      
+      if(this.busStops.length < 1)
+      {
+        console.log("No results found..");
+        this.resultsFound = false;
+      }
+      else
+      {
+        this.resultsFound = true;
+      }
+      this.searching = false;
+    }
+     
   }
 
   goToBusStopPage(stopId, fullname, operators, latitude, longitude)

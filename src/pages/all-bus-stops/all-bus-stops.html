@@ -8,23 +8,47 @@
 
   <ion-navbar>
     <ion-title>allBusStops</ion-title>
+    <!--<ion-icon (click)="search()" class="search-icon" ios="md-search" md="md-search"></ion-icon>-->
   </ion-navbar>
 
 </ion-header>
 
+<ion-content class="search-content">
+  <ion-searchbar class="searchbar" [(ngModel)]="searchTerm" (ionInput)="searchStops()"></ion-searchbar>
+</ion-content>
 
-<ion-content padding>
+<ion-content class="results-content" padding>
 
-    <ion-list [virtualScroll]="busStops">
+   <!-- <ion-searchbar class="searchbar" [(ngModel)]="searchTerm" (ionInput)="searchStops()"></ion-searchbar> -->
 
+    <section *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </section>
+
+    <section class="no-results" *ngIf="resultsFound === false">
+      <h3>No Results Found</h3>
+    </section>
+
+
+
+    <!--<ion-list [virtualScroll]="searchBusStops">
+
+      <ion-item *virtualItem="let busStop" (click)="goToBusStopPage(busStop.stopid, busStop.fullname, busStop.operators, busStop.latitude, busStop.longitude)">
+          <p>{{ busStop.stopid }}</p> 
+          <p>{{ busStop.fullname }}</p>
+      </ion-item>
+    
+    </ion-list> 
+
+    <h1>----------------------</h1> -->
+
+    <ion-list class="bus-stops" [virtualScroll]="busStops">
         <ion-item *virtualItem="let busStop" (click)="goToBusStopPage(busStop.stopid, busStop.fullname, busStop.operators, busStop.latitude, busStop.longitude)">
             <p>{{ busStop.stopid }}</p> 
             <p>{{ busStop.fullname }}</p>
-        </ion-item>
-      
-      </ion-list>
+        </ion-item> 
+    </ion-list>
     
-
     <ion-list>
 
         <p *ngFor="let errorCode of errorCodes">

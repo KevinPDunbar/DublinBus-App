@@ -91,7 +91,7 @@ export class StopMapPage {
             console.log("DATA: " + data.points[i].lat);
           }
 
-          this.loadMap();
+          //this.loadMap();
         });
         
         
@@ -111,7 +111,7 @@ loadMap() {
    
 
    
-    for(let i=0; i<this.busStops.length; i++)
+    /*for(let i=0; i<this.busStops.length; i++)
     {
         this.POINTS.push({position: {lat:this.busStops[i].lat, lng:this.busStops[i].lng},
         //iconData: 'assets/imgs/bus-marker-dark.png',
@@ -125,7 +125,7 @@ loadMap() {
         animation: 'DROP',
         title: this.busStops[i].address,
         stopid: this.busStops[i].stopnumber });
-    } 
+    } */
 
     this.map = GoogleMaps.create('map_canvas', {
         'backgroundColor': 'white',
@@ -410,7 +410,7 @@ loadMap() {
 
     //this.loadMarkers();
 
- this.POINTS.forEach((data: any) => {
+ /*this.POINTS.forEach((data: any) => {
       data.disableAutoPan = true;
       data.icon = 'assets/imgs/bus-marker-dark.png';
       let marker: Marker = this.map.addMarkerSync(data);
@@ -551,6 +551,9 @@ loadMap() {
     marker.setIcon(iconData); 
     }
   
+} */
+
+}
 }
 
 

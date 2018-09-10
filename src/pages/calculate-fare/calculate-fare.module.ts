@@ -4,7 +4,7 @@ import { CalculateFarePage } from './calculate-fare';
 
 @NgModule({
   declarations: [
-    CalculateFarePage,
+    //CalculateFarePage,
   ],
   imports: [
     IonicPageModule.forChild(CalculateFarePage),

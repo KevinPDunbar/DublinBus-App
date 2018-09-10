@@ -4,7 +4,7 @@ import { NewsPage } from './news';
 
 @NgModule({
   declarations: [
-    NewsPage,
+    //NewsPage,
   ],
   imports: [
     IonicPageModule.forChild(NewsPage),

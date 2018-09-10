@@ -1,3 +1,53 @@
 page-all-bus-stops {
 
+    .search-icon {
+        position: absolute;
+        font-size: 2em;
+        right: 5%;
+        top: 25%;
+    }
+
+    .search-content{
+        z-index: 5;
+        height: 15%;
+    }
+
+    .searchbar {
+        width: 100%;
+        //padding: 0;
+    }
+
+    .results-content {
+        margin-top: 15%;
+    }
+
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .no-results {
+        margin: auto;
+        text-align: center;
+        margin-top: 10%;
+        animation-name: slideAnimation;
+        animation-duration: 400ms;
+    }
+
+    .bus-stops {
+        animation-name: slideUpAnimation;
+        animation-duration: 400ms;
+    }
+
+    @keyframes slideAnimation {
+        0%   { opacity: 0; margin-top: -50%; }
+        100% { opacity: 1; margin-top: 10%; }
+    }
+
+    @keyframes slideUpAnimation {
+        0%   { opacity: 0; margin-top: 50%; }
+        100% { opacity: 1; margin-top: 0%; }
+    }
+
 }

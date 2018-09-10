@@ -148,7 +148,7 @@ export class ViewBusStopPage {
 
   viewOnMap()
   {
-    this.navCtrl.push(ViewStopMapPage, {fullname: this.fullname, stopid: this.stopid, latitude: this.latitude, longitude: this.longitude});
+    this.navCtrl.push(ViewStopMapPage, {fullname: this.fullname, stopid: this.stopid, operators: this.operators, latitude: this.latitude, longitude: this.longitude});
   }
 
 }

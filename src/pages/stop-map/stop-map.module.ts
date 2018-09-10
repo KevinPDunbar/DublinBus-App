@@ -4,7 +4,7 @@ import { StopMapPage } from './stop-map';
 
 @NgModule({
   declarations: [
-    StopMapPage,
+    //StopMapPage,
   ],
   imports: [
     IonicPageModule.forChild(StopMapPage),

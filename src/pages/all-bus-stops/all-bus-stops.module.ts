@@ -5,7 +5,7 @@ import { AllBusStopsPage } from './all-bus-stops';
 
 @NgModule({
   declarations: [
-    AllBusStopsPage,
+    //AllBusStopsPage,
   ],
   imports: [
     IonicPageModule.forChild(AllBusStopsPage),

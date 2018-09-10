@@ -4,7 +4,7 @@ import { ViewBusStopPage } from './view-bus-stop';
 
 @NgModule({
   declarations: [
-    ViewBusStopPage,
+    //ViewBusStopPage,
   ],
   imports: [
     IonicPageModule.forChild(ViewBusStopPage),
