@@ -44,8 +44,8 @@ export class FavoritesPage {
     console.log("Stopid: " + stopidToCheck);
 
     const prompt = this.alertCtrl.create({
-      title: 'Login',
-      message: "Enter a name for this new album you're so keen on adding",
+      title: 'Nickname',
+      message: "Enter a name for this bus stop",
       inputs: [
         {
           name: 'title',

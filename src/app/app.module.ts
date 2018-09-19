@@ -19,6 +19,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
 import { NewsPage } from '../pages/news/news';
+import { AllRoutesPage } from '../pages/all-routes/all-routes';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CalculateFarePage,
     StopMapPage,
     ViewStopMapPage,
-    NewsPage
+    NewsPage,
+    AllRoutesPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CalculateFarePage,
     StopMapPage,
     ViewStopMapPage,
-    NewsPage
+    NewsPage,
+    AllRoutesPage
   ],
   providers: [
     StatusBar,

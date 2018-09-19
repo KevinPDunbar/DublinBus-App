@@ -1,3 +1,96 @@
 page-home {
 
+    $light: #bdc3c7;
+    $text-gray: #666;
+
+    .main-menu p {
+        font-weight: bold !important;
+    }
+
+    .menu-item {
+        //padding-top: 10px;
+        //margin: 5% 0% 5% 0%;
+    }
+
+    .heart {
+        color: $light;
+    }
+
+    .left-icon {
+        //font-size: 20px;
+        font-size: 1.5em;
+        //margin-top: 25%;
+        margin-right: 0 !important;
+    }
+
+    .arrow-icon {
+        color:  $light;
+    }
+
+    .main-menu {
+        position: fixed;
+        width: 100%;
+        bottom: -17px;
+    }
+
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .no-results {
+        margin: auto;
+        text-align: center;
+        margin-top: 10%;
+        animation-name: slideAnimation;
+        animation-duration: 400ms;
+    }
+
+    .scroll-zoom-wrapper {
+        white-space: nowrap;
+    }
+
+    .nearest-stops {
+        padding-top: 10%;
+    }
+
+    ion-card {
+        width: 250px !important;
+        display: inline-block;
+        min-height: 100px;
+        max-height: 100px !important;
+    }
+
+    ion-scroll {
+        min-height: 160px; 
+        height: auto;
+            .scroll-content {
+            //padding: 0px !important;
+        }    
+    }
+
+    .card-header p {
+        font-weight: bold;
+        color: $text-gray;
+    }
+
+    .nearest-stops-heading {
+        color: $text-gray;
+        margin-left: 10px;
+    }
+
+    .card-content {
+        color: $text-gray;
+    }
+
+    .stop-name {
+        display: inline; 
+        float: left;
+    }
+
+    .stop-distance {
+        display: inline; 
+        float: right;
+    }
 }

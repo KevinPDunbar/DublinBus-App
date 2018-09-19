@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content class="search-content">
-  <ion-searchbar class="searchbar" [(ngModel)]="searchTerm" (ionInput)="searchStops()"></ion-searchbar>
+  <ion-searchbar class="searchbar" placeholder="Search by stop name or number" [(ngModel)]="searchTerm" (ionInput)="searchStops()"></ion-searchbar>
 </ion-content>
 
 <ion-content class="results-content" padding>
@@ -43,10 +43,10 @@
     <h1>----------------------</h1> -->
 
     <ion-list class="bus-stops" [virtualScroll]="busStops">
-        <ion-item *virtualItem="let busStop" (click)="goToBusStopPage(busStop.stopid, busStop.fullname, busStop.operators, busStop.latitude, busStop.longitude)">
-            <p>{{ busStop.stopid }}</p> 
-            <p>{{ busStop.fullname }}</p>
-        </ion-item> 
+      <ion-item *virtualItem="let busStop" (click)="goToBusStopPage(busStop.stopid, busStop.fullname, busStop.operators, busStop.latitude, busStop.longitude)">
+        <p>{{ busStop.stopid }}</p> 
+        <p>{{ busStop.fullname }}</p>
+      </ion-item> 
     </ion-list>
     
     <ion-list>

@@ -9,16 +9,16 @@ page-all-bus-stops {
 
     .search-content{
         z-index: 5;
-        height: 15%;
+        height: 17%;
+        position: fixed;
     }
 
     .searchbar {
         width: 100%;
-        //padding: 0;
     }
 
     .results-content {
-        margin-top: 15%;
+        margin-top: 10%;
     }
 
     .spinner-container {

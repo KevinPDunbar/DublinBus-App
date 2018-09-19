@@ -1,20 +1,74 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Dublin Bus
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-  <button ion-button (click)="goToAllBusStopsPage()">View All Bus Stops</button>
+  <section class="nearest-stops">
 
-  <button ion-button (click)="goToFavoritesPage()">Go to favorites</button>
+  <h3 class="nearest-stops-heading">Stops Near Me</h3>
 
-  <button ion-button (click)="goToCalculateFare()">Go to calculate fare</button>
+    <section *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </section>
 
-  <button ion-button (click)="goToMap()">Go to Map</button>
+    <ion-scroll scrollX="true" direction="x">
+      <ion-card *ngFor="let closestStop of closestStops" (click)="goToBusStopPage(closestStop.stopid, closestStop.fullname, closestStop.operators, closestStop.latitude, closestStop.longitude)">
+        <ion-card-header class="card-header">
+            <p class="stop-name">{{closestStop.fullname}}: {{closestStop.stopid}}</p>
+            <p class="stop-distance"> <ion-icon name="ios-navigate"></ion-icon>{{closestStop.distance}}</p>
+          </ion-card-header>
+          <ion-card-content class="card-content">
+            Serves <span text-wrap *ngFor="let operator of closestStop.operators">{{operator.routes}}</span>
+        </ion-card-content>
+      </ion-card>
+    </ion-scroll>
 
-  <button ion-button (click)="goToNews()">News</button>
+  </section>
+
+  <section class="main-menu">
+    <ion-list>
+      <button ion-item class="menu-item" (click)="goToFavoritesPage()">
+        <ion-icon class="left-icon heart" name="md-heart" item-start></ion-icon>
+          <p>Favorites</p>
+          <!--<ion-icon name="rose" item-end></ion-icon>-->
+          <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
+      </button>
+
+      <button ion-item (click)="goToAllBusStopsPage()">
+        <ion-icon class="left-icon heart" name="md-bus" item-start></ion-icon>
+        <p>Bus Stops</p>
+        <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
+      </button>
+
+      <button ion-item (click)="goToAllRoutesPage()">
+          <ion-icon class="left-icon heart" name="md-compass" item-start></ion-icon>
+          <p>Routes</p>
+          <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
+      </button>
+
+      <button ion-item (click)="goToCalculateFare()">
+        <ion-icon class="left-icon heart" name="logo-euro" item-start></ion-icon>
+        <p>Fare Calculator</p>
+        <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
+      </button>
+
+      <button ion-item (click)="goToMap()">
+        <ion-icon class="left-icon heart" name="md-pin" item-start></ion-icon>
+        <p>Stops Near Me</p>
+        <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
+      </button>
+
+      <button ion-item (click)="goToNews()">
+        <ion-icon class="left-icon heart" name="md-list-box" item-start></ion-icon>
+        <p>News</p>
+        <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
+      </button>
+
+    </ion-list>
+  </section>  
 </ion-content>
