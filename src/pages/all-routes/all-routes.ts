@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { BusStopsProvider } from '../../providers/bus-stops/bus-stops';
+import { RouteSelectPage } from '../route-select/route-select';
 
 /**
  * Generated class for the AllRoutesPage page.
@@ -73,6 +74,11 @@ export class AllRoutesPage {
       this.searching = false;
     }
      
+  }
+
+  toGoRouteSelect(route)
+  {
+    this.navCtrl.push(RouteSelectPage, {route: route});
   }
 
 }

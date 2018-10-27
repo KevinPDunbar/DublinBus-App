@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>news</ion-title>
+    <ion-title>News</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,9 +15,25 @@
 
 <ion-content no-padding> 
 
-    <ion-card class="item-container" padding *ngFor="let newsItem of newsItems" (click)="toggleDetails(newsItem)"><ion-icon color="primary" item-right [name]="newsItem.icon"></ion-icon>
-      {{newsItem.title}}
+    <section *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </section>
+
+    <ion-card class="item-container" padding *ngFor="let newsItem of newsItems" (click)="toggleDetails(newsItem)">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="icon-col" col-1>
+              <ion-icon color="primary" item-right [name]="newsItem.icon"></ion-icon>
+          </ion-col>
+          <ion-col class="title" col-10>
+              {{newsItem.title}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!--<ion-icon color="primary" item-right [name]="newsItem.icon"></ion-icon>
+      <section text-wrap class="title">{{newsItem.title}}</section>-->
       <div class="item-description" *ngIf="newsItem.showDetails">
+      <p class="date">{{newsItem.date}}</p>
       <p
         [innerHTML]="newsItem.description"> 
       </p>

@@ -1,8 +1,8 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Routes</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Bus Routes</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -10,22 +10,22 @@
     <ion-searchbar class="searchbar" placeholder="Search by route" [(ngModel)]="searchTerm" (ionInput)="searchRoutes()"></ion-searchbar>
 </ion-content>-->
 
-<ion-content class="" padding>
+<ion-content padding>
 
     <ion-searchbar ion-fixed class="searchbar" placeholder="Search by route" [(ngModel)]="searchTerm" (ionInput)="searchRoutes()"></ion-searchbar>
 
     <section *ngIf="searching" class="spinner-container">
-      <ion-spinner></ion-spinner>
+        <ion-spinner></ion-spinner>
     </section>
-  
+
     <section class="no-results" *ngIf="resultsFound === false">
-      <h3>No Results Found</h3>
+        <h3>No Results Found</h3>
     </section>
 
     <ion-list class="bus-stops results-content" [virtualScroll]="routes">
-      <ion-item *virtualItem="let route">
-        <p>{{ route.route }}</p>
-      </ion-item> 
-  </ion-list>
+        <ion-item (click)="toGoRouteSelect(route.route)" *virtualItem="let route">
+            <p>{{ route.route }}</p>
+        </ion-item>
+    </ion-list>
 
 </ion-content>

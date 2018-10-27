@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Route Options</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <section *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </section>
+
+  <section *ngIf="resultsFound === false" class="spinner-container">
+      <p>no route information available</p>
+  </section>
+
+  <ion-list class="bus-stops results-content" [virtualScroll]="routeOptions">
+      <ion-item (click)="goToRouteView(route.origin, route.destination, route.stops)" *virtualItem="let route">
+          <p>{{route.origin}} -> {{route.destination}}</p>
+      </ion-item>
+  </ion-list>
+
+  <!--<ion-card (click)="goToRouteView(route.origin, route.destination, route.stops)" *ngFor="let route of routeOptions">
+    <p>{{route.origin}} -> {{route.destination}}</p>
+  </ion-card>-->
+
+</ion-content>

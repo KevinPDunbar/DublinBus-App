@@ -1,22 +1,34 @@
 page-view-bus-stop {
 
+    $text-gray: #666;
+
     ion-content {
         padding-top: 0;
     }
 
     .stop-information {
-        //position: fixed;
-        //top: 0;
+        color: $text-gray;
+        h4 {
+            font-weight: bold;
+        }
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
     .real-time-information {
-        margin-top: 150px;
+        margin-top: 100px;
+    }
+
+    ion-content.has-refresher > .scroll-content {
+        padding-bottom: 100px !important;
     }
 
     .map-icon {
+        position: absolute;
         font-size: 2em;
-        float: right;
         right: 5%;
+        top: 2%;
+        //color: #fff;
     }
 
     .due-time {
@@ -30,7 +42,7 @@ page-view-bus-stop {
     }
 
     .isNotFavorite {
-        color: gray !important;
+        color: #fff !important;
     }
 
     .pageHeader {
@@ -43,6 +55,21 @@ page-view-bus-stop {
         font-size: 2em;
         right: 5%;
         top: 25%;
+    }
+
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 50px;
+        
+    }
+
+    .no-results {
+        margin: auto;
+        text-align: center;
+        margin-top: 10%;
+        animation-name: slideAnimation;
+        animation-duration: 400ms;
     }
 
 }

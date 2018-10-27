@@ -20,8 +20,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { BusStopsProvider } from '../providers/bus-stops/bus-stops';
 import { NewsPage } from '../pages/news/news';
 import { AllRoutesPage } from '../pages/all-routes/all-routes';
+import { RouteSelectPage } from '../pages/route-select/route-select';
+import { RouteViewPage } from '../pages/route-view/route-view';
+import { RouteMapPage } from '../pages/route-map/route-map';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StopMapPage,
     ViewStopMapPage,
     NewsPage,
-    AllRoutesPage
+    AllRoutesPage,
+    RouteSelectPage,
+    RouteViewPage,
+    RouteMapPage
   ],
   imports: [
     BrowserModule,
@@ -53,13 +60,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StopMapPage,
     ViewStopMapPage,
     NewsPage,
-    AllRoutesPage
+    AllRoutesPage,
+    RouteSelectPage,
+    RouteViewPage,
+    RouteMapPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     NativeStorage,
     GoogleMaps,
+    ScreenOrientation,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BusStopsProvider

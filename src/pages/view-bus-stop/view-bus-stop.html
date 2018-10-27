@@ -1,64 +1,49 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{fullname}}</ion-title>
-    <ion-icon (click)="removeFromFavorites()" class="isFavorite favorite-icon" *ngIf="isFavorite === true" ios="md-heart" md="md-heart"></ion-icon>
-    <ion-icon (click)="addToFavorites()" class="isNotFavorite favorite-icon" *ngIf="isFavorite === false" ios="md-heart" md="md-heart"></ion-icon>
-  </ion-navbar>
-
-  <!--<section class="pageHeader">
-      <ion-icon class="isFavorite" *ngIf="isFavorite === true" ios="md-star" md="md-star"></ion-icon>
-      <ion-icon class="isNotFavorite" *ngIf="isFavorite === false" ios="md-star" md="md-star"></ion-icon>
-
-      <p>{{fullname}}</p>
-      <span *ngFor="let operator of operators"> {{operator}} </span>
-
-      <p *ngFor="let errorCode of errorCodes">
-          <span *ngIf="errorCode.errorCode === '0'">Request Ok</span>
-          <span *ngIf="errorCode.errorCode === '1'">No Results Found</span>
-          <span *ngIf="errorCode.errorCode === '2'">Missing Parameters</span>
-          <span *ngIf="errorCode.errorCode === '3'">Invalid Parameters</span>
-          <span *ngIf="errorCode.errorCode === '4'">The Service is Experiencing Scheduled Downtime</span>
-          <span *ngIf="errorCode.errorCode === '5'">An Unexpected System Error Occurred</span>
-      </p>
-      
-      
-      <ion-icon (click)="viewOnMap()" name="md-pin"></ion-icon>
-
-      <ion-icon (click)="addToFavorites()"name="ios-heart-outline"></ion-icon>
-
-  </section> -->
+    <ion-navbar>
+        <ion-title>{{fullname}}</ion-title>
+        <ion-icon (click)="removeFromFavorites()" class="isFavorite favorite-icon" *ngIf="isFavorite === true" ios="md-heart" md="md-heart"></ion-icon>
+        <ion-icon (click)="addToFavorites()" class="isNotFavorite favorite-icon" *ngIf="isFavorite === false" ios="md-heart" md="md-heart"></ion-icon>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content no-padding>
+<ion-content padding>
 
-<section class="stop-information">
- <h2>{{fullname}}</h2>
- <h2> Serves: <span *ngFor="let operator of operators"> {{operator}} </span></h2>
- <ion-icon class="map-icon" (click)="viewOnMap()" name="md-pin"></ion-icon>
-</section>
-    
+    <section class="stop-information">
+        <h4>{{fullname}}</h4>
+        <p> Serves: <span *ngFor="let operator of operators"> {{operator}} </span></p>
+        <ion-icon class="map-icon" (click)="viewOnMap()" name="md-pin"></ion-icon>
+    </section>
+
 
 </ion-content>
 
 <ion-content class="real-time-information">
 
-        <ion-refresher (ionRefresh)="doRefresh($event)">
-                <ion-refresher-content>
-                </ion-refresher-content>
-              </ion-refresher>
-          
-              <ion-list>
-                  <ion-item *ngFor="let buse of buses">
-                   <p>{{buse.route}}</p> 
-                   <p>{{buse.origin}} -> {{buse.destination}}</p>
-                   <section class="due-time">
-                    <p *ngIf="buse.duetime === 'Due'">{{buse.duetime}}</p>
-                    <p *ngIf="buse.duetime <= 1">{{buse.duetime}} min</p>
-                    <p *ngIf="buse.duetime > 1">{{buse.duetime}} mins</p>
-                    </section>  
-                  </ion-item>  
-              </ion-list>
- </ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <section *ngIf="searching && notRefreshing" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </section>
+
+    <section *ngIf="realTimeAvailable === false" class="spinner-container">
+        <p>no realtime information available</p>
+    </section>
+
+    <ion-list>
+        <ion-item *ngFor="let buse of buses">
+            <p>{{buse.route}}</p>
+            <p>{{buse.origin}} -> {{buse.destination}}</p>
+            <section class="due-time">
+                <p *ngIf="buse.duetime === 'Due'">{{buse.duetime}}</p>
+                <p *ngIf="buse.duetime <= 1">{{buse.duetime}} min</p>
+                <p *ngIf="buse.duetime > 1">{{buse.duetime}} mins</p>
+            </section>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>favorites</ion-title>
+    <ion-title>Favorites</ion-title>
     <ion-icon class="reorder-icon" (click)="toggleReorder()" name="md-list"></ion-icon>
   </ion-navbar>
 
@@ -18,15 +18,19 @@
 
     <ion-list reorder="{{canReorder}}" (ionItemReorder)="reorderItems($event)">
 
+    <section class="no-favorites" *ngIf="hasFavorites === false">
+      <h4>Your favorites will appear here</h4>
+    </section>
+
     <ion-item-sliding #item *ngFor="let favorite of favorites">
         <ion-item (click)="goToBusStopPage(favorite.stopid, favorite.fullname, favorite.operators, favorite.latitude, favorite.longitude)">
+          <p class="nickname" *ngIf="favorite.nickname">{{favorite.nickname}}</p>
           <p>{{ favorite.stopid }}</p> 
           <p>{{ favorite.fullname }}</p>
-          <p *ngIf="favorite.nickname">Nickname: {{favorite.nickname}}</p>
         </ion-item>
         <ion-item-options class="item-options" side="right">
-            <button ion-button (click)="editNickname(favorite.stopid)">Nickname</button>
-            <button ion-button color="danger" (click)="removeFavorite(favorite.stopid)">Remove</button>
+            <button ion-button class="nickname-btn" (click)="editNickname(favorite.stopid)">Nickname</button>
+            <button ion-button class="remove-btn" color="danger" (click)="removeFavorite(favorite.stopid)">Remove</button>
           </ion-item-options>
         <button ion-btn (click)="editNickname(favorite.stopid)">Edit Nickname</button>
     </ion-item-sliding>

@@ -67,20 +67,16 @@ export class ViewStopMapPage {
     this.geo.getCurrentPosition().then((resp) => {
         this.currentLat = resp.coords.latitude
         this.currentLng = resp.coords.longitude
-        //this.loadMap();
        }).catch((error) => {
          console.log('Error getting location', error);
          this.currentLat = 53.3498;
          this.currentLng = 6.2603;
-         //this.loadMap();
        });
 
-       //this.loadMap();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewStopMapPage');
-    ///this.loadMap();
   }
 
   ionViewWillEnter()
@@ -379,7 +375,7 @@ export class ViewStopMapPage {
 
     let marker: Marker = this.map.addMarkerSync({
         title: this.fullname,
-        icon: 'blue',
+        icon: '#1abc9c',
         stopid: this.stopid,
         operators: this.operators,
         latitude: this.latitude,
@@ -390,20 +386,20 @@ export class ViewStopMapPage {
           lng: this.longitude
         }
       });
-      marker.setAnimation('drop');
-      let iconData: any = marker.get('iconData');
-      marker.setIcon(iconData);
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(this.onMarkerClick);
+      //marker.setAnimation('drop');
+      //let iconData: any = marker.get('iconData');
+      //marker.setIcon(iconData);
+      //marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(this.onMarkerClick);
       //marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(this.onInfoClick);
 
    
 
-    marker.addEventListener(GoogleMapsEvent.INFO_CLICK).subscribe(
+   /* marker.addEventListener(GoogleMapsEvent.INFO_CLICK).subscribe(
         (data) => {
             console.log("new method clicked");
             this.navCtrl.push(ViewBusStopPage, {fullname: marker.get('title'), stopid: marker.get('stopid'), operators: marker.get('operators'), latitude: marker.get('latitude'), longitude: marker.get('longitude')});
             this.map.destroy();
-    });
+    });*/
 
     this.map.addEventListener(GoogleMapsEvent.MY_LOCATION_BUTTON_CLICK).subscribe(
     (data) => {
@@ -418,9 +414,9 @@ export class ViewStopMapPage {
             this.map.animateCamera({
                 'target': pos,
                 //'tilt': 60,
-                'zoom': 18,
-                'bearing': 140,
-                'duration': 1000
+                'zoom': 17,
+                //'bearing': 140,
+                'duration': 400
                 });
 
             }).catch((error) => {
@@ -432,18 +428,18 @@ export class ViewStopMapPage {
 
   }
 
-  onMarkerClick(params: any) {
+  /*onMarkerClick(params: any) {
     let marker: Marker = <Marker>params[1];
     //let iconData: any = marker.get('iconData');
     console.log("Marker Clicked Boi " + marker.get('title') + " stopid: " + marker.get('stopid'));
     //marker.setIcon(iconData);
-  }
+  } */
 
-  onInfoClick(params: any) {
+  /*onInfoClick(params: any) {
     let marker: Marker = <Marker>params[1];
     //let iconData: any = marker.get('iconData');
     console.log("INFO WINDOW CLICKED");
     //marker.setIcon(iconData); 
-    }
+    }*/
 
 }

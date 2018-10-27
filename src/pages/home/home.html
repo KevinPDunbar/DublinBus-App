@@ -10,13 +10,17 @@
 
   <section class="nearest-stops">
 
-  <h3 class="nearest-stops-heading">Stops Near Me</h3>
+  <h4 class="nearest-stops-heading">Stops Near Me <ion-icon class="refresh-icon" (click)="refreshStops()" name="md-refresh"></ion-icon></h4>
 
     <section *ngIf="searching" class="spinner-container">
       <ion-spinner></ion-spinner>
     </section>
 
-    <ion-scroll scrollX="true" direction="x">
+    <section *ngIf="canGetLocation === false" class="spinner-container">
+      <p>unable to get your current location</p>
+    </section>
+
+    <ion-scroll *ngIf="searching === false && canGetLocation === true" scrollX="true" direction="x">
       <ion-card *ngFor="let closestStop of closestStops" (click)="goToBusStopPage(closestStop.stopid, closestStop.fullname, closestStop.operators, closestStop.latitude, closestStop.longitude)">
         <ion-card-header class="card-header">
             <p class="stop-name">{{closestStop.fullname}}: {{closestStop.stopid}}</p>
@@ -51,11 +55,11 @@
           <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
       </button>
 
-      <button ion-item (click)="goToCalculateFare()">
+      <!--<button ion-item (click)="goToCalculateFare()">
         <ion-icon class="left-icon heart" name="logo-euro" item-start></ion-icon>
         <p>Fare Calculator</p>
         <ion-icon class="arrow-icon" name="ios-arrow-forward-outline"  item-end></ion-icon>
-      </button>
+      </button>-->
 
       <button ion-item (click)="goToMap()">
         <ion-icon class="left-icon heart" name="md-pin" item-start></ion-icon>
@@ -71,4 +75,5 @@
 
     </ion-list>
   </section>  
+
 </ion-content>

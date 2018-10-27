@@ -25,13 +25,13 @@ page-all-routes {
     .no-results {
         margin: auto;
         text-align: center;
-        margin-top: 10%;
-        animation-name: slideAnimation;
+        margin-top: 20%;
+        animation-name: slide-down;
         animation-duration: 400ms;
     }
 
     .bus-stops {
-        animation-name: slideUpAnimation;
+        animation-name: slide-up;
         animation-duration: 400ms;
     }
 
@@ -43,6 +43,16 @@ page-all-routes {
     @keyframes slideUpAnimation {
         0%   { opacity: 0; margin-top: 50%; }
         100% { opacity: 1; margin-top: 0%; }
+    }
+
+    @keyframes slide-down {
+        0%   { opacity: 0; -webkit-transform: translate3d(0,-30%,0); }
+        100% { opacity: 1; -webkit-transform: translate3d(0,0,0); }
+      }
+
+    @keyframes slide-up {
+    0%   { opacity: 0; -webkit-transform: translate3d(0,30%,0); }
+    100% { opacity: 1; -webkit-transform: translate3d(0,0,0); }
     }
 
 }

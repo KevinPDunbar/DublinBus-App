@@ -1,0 +1,19 @@
+page-route-select {
+
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 50px;
+        margin-top: 50%;
+        
+    }
+
+    .no-results {
+        margin: auto;
+        text-align: center;
+        margin-top: 50%;
+        animation-name: slideAnimation;
+        animation-duration: 400ms;
+    }
+
+}

@@ -1,14 +1,36 @@
 page-favorites {
 
+    $text-gray: #666;
+
+    p {
+        color: $text-gray;
+    }
+
     .reorder-icon {
         position: absolute;
         font-size: 2em;
         right: 5%;
         top: 25%;
+        color: #fff;
     }
 
     .item-options {
         font-size: 10px !important;
         color: yellow !important;
+    }
+
+    .no-favorites {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 30%;
+        color: $text-gray;
+    }
+
+    .nickname {
+        font-weight: bold;
+    }
+
+    .nickname-btn {
+        background-color: $text-gray;
     }
 }

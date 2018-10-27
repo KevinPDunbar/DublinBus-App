@@ -1,5 +1,8 @@
 page-news {
 
+    $light: #bdc3c7;
+    $text-gray: #666;
+
     img {
         display: none;
     }
@@ -10,6 +13,20 @@ page-news {
         z-index: 5;
     }
 
+    .item-container ion-icon {
+        color: $light;
+    }
+
+    .icon-col {
+        margin-left: -3%;
+    }
+
+    .title {
+        color: $text-gray;
+        font-weight: bold;
+        //margin-left: 5%;
+    }
+
     .item-description {
         animation-name: slide;
         animation-duration: 500ms;
@@ -17,15 +34,37 @@ page-news {
         margin-top: 10px;
         z-index: 0;
     }
+
+    .item-description p {
+        color: $text-gray;
+    }
     
     @keyframes slide {
-        0%   { opacity: 0; margin-top: -100px }
-        100% { opacity: 1; margin-top: 10px; }
+        0%   { opacity: 0; -webkit-transform: translate3d(0,-30%,0); }
+        100% { opacity: 1; -webkit-transform: translate3d(0,0,0); }
       }
 
     ion-card {
         width: 100% !important;
         margin: 0 !important; 
+    }
+
+    .date {
+        margin-bottom: 10px;
+    }
+
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding-top: 50%;
+    }
+
+    .no-results {
+        margin: auto;
+        text-align: center;
+        margin-top: 10%;
+        animation-name: slideAnimation;
+        animation-duration: 400ms;
     }
 
 }

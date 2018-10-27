@@ -32,6 +32,10 @@ export class ViewBusStopPage {
   favorites = [];
   isFavorite;
 
+  realTimeAvailable: any = true;
+  searching: any = false;
+  notRefreshing: any = true;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private nativeStorage: NativeStorage) {
 
    this.stopid =  this.navParams.get('stopid');  
@@ -48,13 +52,18 @@ export class ViewBusStopPage {
    this.getStopInformation();
 
    this.nativeStorage.getItem('favorites')
-   .then(
-   (data) => {
-       if (data !== null) {
-        this.favorites = data
-        this.checkFavorites();
-       }
-   });
+  .then(
+    data => {
+      console.log(data)
+      this.favorites = data;
+      this.checkFavorites();
+    },
+    error => {
+      console.error(error)
+      this.favorites = [];
+      this.isFavorite = false;
+    }
+  );
 
 
   }
@@ -65,7 +74,7 @@ export class ViewBusStopPage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-
+    this.notRefreshing = false;
     this.buses = [];
     this.errorCodes = [];
     this.getStopInformation();
@@ -74,11 +83,19 @@ export class ViewBusStopPage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
+      this.notRefreshing = true;
     }, 2000);
   }
 
   checkFavorites()
   {
+    if(this.favorites.length < 1)
+    {
+      console.log("FAVORITE IS ZERO");
+      this.isFavorite = false;
+    }
+    else
+    {
       for(let i=0; i<this.favorites.length; i++)
       {
         if(this.favorites[i].stopid === this.stopid)
@@ -93,24 +110,37 @@ export class ViewBusStopPage {
           console.log("Is Not a favorite");              
         }
       }
+    }
+      
   }
 
   getStopInformation()
   {
     console.log("getting bus stops...");
+    this.searching = true;
 
     this.http.get('https://data.smartdublin.ie/cgi-bin/rtpi/realtimebusinformation?stopid=' + this.stopid + '&format=json')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
+          this.searching = false;
           console.log(data);
 
           this.errorCodes.push({'errorCode' : data.errorcode});
 
-          for(let i=0; i<data.numberofresults; i++)
+          if(data.numberofresults < 1)
           {
-            this.buses.push(data.results[i]);
+            this.realTimeAvailable = false;
           }
+          else
+          {
+            for(let i=0; i<data.numberofresults; i++)
+            {
+              this.realTimeAvailable = true;
+              this.buses.push(data.results[i]);
+            }
+          }
+
         });
   }
 

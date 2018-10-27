@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{route}}</ion-title>
+    <ion-icon (click)="viewRouteOnMap()" class="map-icon" ios="md-pin" md="md-pin"></ion-icon>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list class="bus-stops results-content" [virtualScroll]="stops">
+    <ion-item (click)="viewBusStop(stop.stopid, stop.fullname, stop.operators, stop.latitude, stop.longitude)"  *virtualItem="let stop">
+      <p>{{stop.stopid}}</p>
+      <p>{{stop.fullname}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

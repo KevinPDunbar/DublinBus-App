@@ -4,6 +4,7 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import * as xml2js from 'xml2js';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 /**
  * Generated class for the NewsPage page.
@@ -43,9 +44,12 @@ export class NewsPage{
 
   active: boolean;
 
+  searching: any = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
 
     this.active=false;
+    this.searching = true;
   }
 
   ionViewDidLoad() {
@@ -81,6 +85,7 @@ export class NewsPage{
 
     this.http.get('http://dublinbus.ie/templates/public/routeplannerservice/newshandler.ashx?pageid=27')
         .map(res => {
+          this.searching = false;
           xml2js.parseString( res.text(), function (err, result) {
           console.dir(result); // Prints JSON object!
           jsonClone = result;
@@ -89,18 +94,22 @@ export class NewsPage{
             console.log(jsonClone.xml.channel[0].item[i]);
             let title = jsonClone.xml.channel[0].item[i].title;
             let date = jsonClone.xml.channel[0].item[i].pubDate;
-            let description = jsonClone.xml.channel[0].item[i].description;
+            let description = jsonClone.xml.channel[0].item[i].description.toString();
+
+            let texts = description.replace(/<a\b[^>]*>(.*?)<\/a>/g,"(on dublinbus.ie)");
+
+            let fullDate = new Date(date).toLocaleString("en-GB");
+            let ddmmyyyy = fullDate.split(',')[0];
+
             let icon = 'md-add-circle'
             let showDetails = false;
             let visibleState = false;
-            itemClone.push({title: title, date: date, description: description, icon: icon, showDetails: showDetails, visibleState: visibleState});
+            itemClone.push({title: title, date: ddmmyyyy, description: texts, icon: icon, showDetails: showDetails, visibleState: visibleState});
             
           }
       });
     })
-    .subscribe(data => { 
-        console.log(jsonClone.xml.channel[0].item);  
-        
+    .subscribe(data => {  
         // Real Data => jsonClone.xml.channel[0].item
     });
   }

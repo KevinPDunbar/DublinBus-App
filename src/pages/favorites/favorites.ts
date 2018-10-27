@@ -11,10 +11,33 @@ import { ViewBusStopPage } from '../view-bus-stop/view-bus-stop';
 export class FavoritesPage {
 
   favorites = [];
+  hasFavorites = true;
 
   canReorder: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage, public alertCtrl: AlertController) {
+
+    
+   this.nativeStorage.getItem('favorites')
+   .then(
+     data => {
+       console.log(data)
+       if(data.length < 1)
+       {
+         this.hasFavorites = false;
+       }
+       else
+       {
+         this.hasFavorites = true;
+       }
+       this.favorites = data;
+     },
+     error => {
+       console.error(error)
+       this.favorites = [];
+       this.hasFavorites = false;
+     }
+   );
 
     this.nativeStorage.getItem('favorites')
     .then(
@@ -45,6 +68,7 @@ export class FavoritesPage {
 
     const prompt = this.alertCtrl.create({
       title: 'Nickname',
+      cssClass: 'nick-alert',
       message: "Enter a name for this bus stop",
       inputs: [
         {
@@ -104,6 +128,10 @@ export class FavoritesPage {
     });
 
       this.favorites = updated;
+      if(this.favorites.length < 1)
+      {
+        this.hasFavorites = false;
+      }
       this.nativeStorage.setItem('favorites', this.favorites)
       .then(
         () => console.log('Stored item!'),
