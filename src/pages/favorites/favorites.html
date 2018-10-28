@@ -35,13 +35,9 @@
         <button ion-btn (click)="editNickname(favorite.stopid)">Edit Nickname</button>
     </ion-item-sliding>
 
-    
-  
   </ion-list>
 
-
-<ion-list>
-
+  <ion-list>
     <p *ngFor="let errorCode of errorCodes">
         <!--<span *ngIf="errorCode.errorCode === '0'">Request Ok</span> -->
         <span *ngIf="errorCode.errorCode === '1'">No Results Found</span>
@@ -49,8 +45,7 @@
         <span *ngIf="errorCode.errorCode === '3'">Invalid Parameters</span>
         <span *ngIf="errorCode.errorCode === '4'">The Service is Experiencing Scheduled Downtime</span>
         <span *ngIf="errorCode.errorCode === '5'">An Unexpected System Error Occurred</span>
-    </p>
-    
+    </p>  
   </ion-list>
 
 </ion-content>

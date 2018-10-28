@@ -39,22 +39,17 @@ export class NewsPage{
 
   jsonData;
   newsItems = [];
-
   visibleState = 'visible';
-
   active: boolean;
-
   searching: any = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
-
     this.active=false;
     this.searching = true;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewsPage');
-
     this.getNews();
   }
 

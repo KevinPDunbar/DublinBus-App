@@ -53,10 +53,6 @@ export class FavoritesPage {
 
   goToBusStopPage(stopId, fullname, operators, latitude, longitude)
   {
-    console.log("StopId: " + stopId);
-    console.log("fullname: " + fullname);
-    console.log("operators: " + operators);
-
     this.navCtrl.push(ViewBusStopPage, {stopid: stopId, fullname: fullname, operators: operators, latitude: latitude, longitude: longitude});
   }
 
@@ -64,7 +60,6 @@ export class FavoritesPage {
   {
     let nickname;
     let stopidToCheck = stopid;
-    console.log("Stopid: " + stopidToCheck);
 
     const prompt = this.alertCtrl.create({
       title: 'Nickname',
@@ -99,9 +94,6 @@ export class FavoritesPage {
 
   saveNickname(nickname, stopToCheck)
   {
-    console.log("nickname to save: " + nickname);
-    console.log("Stop to check: " + stopToCheck);
-
     for(let i=0; i<this.favorites.length; i++)
     {
       if(this.favorites[i].stopid === stopToCheck)

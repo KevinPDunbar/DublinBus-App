@@ -53,10 +53,6 @@ export class AllBusStopsPage {
           }
     }
 
-    //this.busStops.push(this.busProvider.getBusStops().results);
-
-    console.log(this.busProvider.getBusStops());
-
     /*this.http.get('https://data.smartdublin.ie/cgi-bin/rtpi/busstopinformation?stopid=')
         .map(res => res.json())
         .subscribe(data => {
@@ -112,10 +108,6 @@ export class AllBusStopsPage {
 
   goToBusStopPage(stopId, fullname, operators, latitude, longitude)
   {
-    console.log("StopId: " + stopId);
-    console.log("fullname: " + fullname);
-    console.log("operators: " + operators[0].routes);
-
     this.navCtrl.push(ViewBusStopPage, {stopid: stopId, fullname: fullname, operators: operators[0].routes, latitude: latitude, longitude: longitude});
   }
 

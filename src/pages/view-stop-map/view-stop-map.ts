@@ -51,13 +51,10 @@ export class ViewStopMapPage {
   newMarkers: BaseArrayClass<any> = new BaseArrayClass<any>([]);
   POINTS: BaseArrayClass<any> = new BaseArrayClass<any>([]);
 
-
   data;
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geo: Geolocation) {
 
-    
     this.stopid = this.navParams.get('stopid');
 
     this.fullname = this.navParams.get('fullname');

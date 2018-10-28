@@ -68,8 +68,6 @@ export class StopMapPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StopMapPage');
-    //this.getBusStops();
-    //this.loadMap();
   }
 
 loadMap() {
@@ -375,8 +373,6 @@ loadMap() {
 
     this.map.addEventListener(GoogleMapsEvent.MY_LOCATION_BUTTON_CLICK).subscribe(
         (data) => {
-            console.log("BUTTON CLICKED");
-
             this.geo.getCurrentPosition().then((resp) => {
                 this.currentLat = resp.coords.latitude
                 this.currentLng = resp.coords.longitude
@@ -390,12 +386,9 @@ loadMap() {
                     'bearing': 140,
                     'duration': 400 //ms
                   });
-
                }).catch((error) => {
-                 console.log('Error getting location', error);
-                 
-               });
-        
+                 console.log('Error getting location', error);         
+            });
         });
 
 
@@ -403,13 +396,10 @@ loadMap() {
        (data) => {
            this.map.addListenerOnce('idle')
            {
-            console.log("MAP WAS DRAGGED AND ENED");
             console.log("lat: " + this.map.getCameraPosition().target.lat);
             console.log("lng: " + this.map.getCameraPosition().target.lng);
-
             this.loadMarkers();
-           }
-            
+           }   
        }
     );
     
@@ -421,15 +411,12 @@ loadMap() {
                     this.loadMarkers();
                     this.map.removeEventListener(GoogleMapsEvent.CAMERA_MOVE_END);
                 }
-            )
-            
-        }
-    )
+            )   
+        })
      
-
   }
 
-  placeMarkers()
+    placeMarkers()
     {
         this.map.clear();
         this.POINTS.empty();
@@ -467,12 +454,6 @@ loadMap() {
 
             marker.addEventListener(GoogleMapsEvent.INFO_CLICK).subscribe(
                 (data) => {
-                    console.log("new method clicked");
-                    console.log("Title: " + marker.get('title'));
-                    console.log("Stop Id: " + marker.get('stopid'));
-                    console.log("Operators: " + marker.get('operators'));
-                    console.log("Latitude: " + marker.get('latitude'));
-                    console.log("Longitude: " + marker.get('longitude'));
                     this.map.removeEventListener(GoogleMapsEvent.INFO_CLICK);
                     this.navCtrl.push(ViewBusStopPage, {fullname: marker.get('title'), stopid: marker.get('stopid'), operators: marker.get('operators'), latitude: marker.get('latitude'), longitude: marker.get('longitude')});
             });
@@ -495,7 +476,6 @@ loadMap() {
         for(let i=0; i<this.data.numberofresults; i++)
         {
             let latlng = new LatLng(parseFloat(this.data.results[i].latitude) , parseFloat(this.data.results[i].longitude));
-            console.log("LAT LNG: " + latlng);
             if(bounds.contains(latlng))
             {
                 //The marker is within the current view
@@ -516,7 +496,6 @@ loadMap() {
   onMarkerClick(params: any) {
     let marker: Marker = <Marker>params[1];
     //let iconData: any = marker.get('iconData');
-    console.log("Marker Clicked Boi " + marker.get('title') + " stopid: " + marker.get('stopid'));
     //marker.setIcon(iconData);
   }
 

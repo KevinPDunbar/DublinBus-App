@@ -44,7 +44,6 @@ export class RouteSelectPage {
         .map(res => res.json())
         .subscribe(data => {
           this.searching = false;
-          console.log("data: " + data.results);
           if(data.results.length < 1)
           {
             this.resultsFound = false;

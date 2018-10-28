@@ -58,17 +58,6 @@ export class HomePage {
      });
   }
 
-  test()
-  {
-    this.http.get('https://data.smartdublin.ie/cgi-bin/rtpi/realtimebusinformation?stopid=7602&format=json')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          console.log(data);
-        });
-       // http://[rtpiserver]/busstopinformation?stopid=[stopid]&stopname=[stopname]&format=[json]
-  }
-
   goToAllBusStopsPage()
   {
     this.navCtrl.push(AllBusStopsPage);

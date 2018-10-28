@@ -43,12 +43,7 @@ export class ViewBusStopPage {
    this.operators =  this.navParams.get('operators'); 
    this.latitude = this.navParams.get('latitude');
    this.longitude = this.navParams.get('longitude');
-   console.log("Passed in Id: " + this.stopid);
-   console.log("Passed in fullname: " + this.fullname);
-   console.log("Passed in lat: " + this.latitude);
-   console.log("Passed in long: " + this.longitude);
-   //console.log("Passed in operators: " + this.operators[0].routes);
-   //this.operators = this.operators[0].routes;
+  
    this.getStopInformation();
 
    this.nativeStorage.getItem('favorites')
@@ -64,7 +59,6 @@ export class ViewBusStopPage {
       this.isFavorite = false;
     }
   );
-
 
   }
 
@@ -116,7 +110,6 @@ export class ViewBusStopPage {
 
   getStopInformation()
   {
-    console.log("getting bus stops...");
     this.searching = true;
 
     this.http.get('https://data.smartdublin.ie/cgi-bin/rtpi/realtimebusinformation?stopid=' + this.stopid + '&format=json')
@@ -146,7 +139,6 @@ export class ViewBusStopPage {
 
   addToFavorites()
   {
-    console.log("Adding to favorites, operators: " + this.operators);
     this.favorites.push({"stopid": this.stopid, "fullname": this.fullname, "operators": this.operators, "latitude": this.latitude, "longitude": this.longitude, "nickname": ''});
     
     this.checkFavorites();

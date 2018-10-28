@@ -99057,11 +99057,6 @@ export class BusStopsProvider {
         nearestStops.push(this.distances[i]);
       }
 
-      console.log("cloest stop privider: " + closestStop.fullname);
-      console.log("closest distance is: " + closestStopDistance);
-      //return closestStop;
-
-      console.log("Nearest Stops: " + nearestStops);
       return nearestStops;
   }
 
@@ -99087,8 +99082,6 @@ export class BusStopsProvider {
       Math.sin(dLon / 2) * Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
-  
-    //d /= 1.60934;
   
     console.log("Distance between points is: " + d);
     return d;

@@ -31,10 +31,6 @@ export class RouteViewPage {
     this.destination =  this.navParams.get('destination');
     this.stops =  this.navParams.get('stops');
 
-    console.log("Route: " + this.route);
-    console.log("Orogin: " + this.origin);
-    console.log("Destination: " + this.destination);
-    console.log("Stops: " + this.stops);
   }
 
   ionViewDidLoad() {
@@ -44,11 +40,6 @@ export class RouteViewPage {
   viewBusStop(stopid, fullname, operators, latitude, longitude)
   {
     let stopToView = this.busStops.getStopOperators(stopid);
-    console.log("StopId: " + stopid);
-    console.log("fullname: " + stopToView[0].fullname);
-    console.log("operators: " + stopToView[0].operators);
-    console.log("latitude: " + stopToView[0].latitude);
-    console.log("longitude: " + stopToView[0].longitude);
     this.navCtrl.push(ViewBusStopPage, {route: this.route, stopid: stopid, fullname: stopToView[0].fullname, operators: stopToView[0].operators[0].routes, latitude: stopToView[0].latitude, longitude: stopToView[0].longitude});
   }
 

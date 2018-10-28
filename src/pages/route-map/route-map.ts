@@ -54,13 +54,11 @@ export class RouteMapPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public busProvider: BusStopsProvider, public geo: Geolocation) {
 
     this.route = this.navParams.get('route');
-    console.log("the passed in route name: " + this.navParams.get('route'));
     let stopsParam = this.navParams.get('stops');
 
     for(let i=0; i<stopsParam.length; i++)
     {
       this.stops.push(stopsParam[i]);
-      console.log(stopsParam[i].stopid);
     }
   }
 
@@ -414,7 +412,6 @@ export class RouteMapPage {
                     this.map.removeEventListener(GoogleMapsEvent.CAMERA_MOVE_END);
                 }
             )
-            
         }
     )
      
@@ -451,21 +448,9 @@ export class RouteMapPage {
             marker.addEventListener(GoogleMapsEvent.INFO_CLICK).subscribe(
                 (data) => {
                     let stopid = marker.get('stopid');
-                    console.log("new method clicked");
-                    console.log("Title: " + marker.get('title'));
-                    console.log("Stop Id: " + marker.get('stopid'));
-                    console.log("Operators: " + marker.get('operators'));
-                    console.log("Latitude: " + marker.get('latitude'));
-                    console.log("Longitude: " + marker.get('longitude'));
                     this.map.removeEventListener(GoogleMapsEvent.INFO_CLICK);
                     let stopToView = this.busProvider.getStopOperators(stopid);
-                    console.log("StopId: " + stopid);
-                    console.log("fullname: " + stopToView[0].fullname);
-                    console.log("operators: " + stopToView[0].operators);
-                    console.log("latitude: " + stopToView[0].latitude);
-                    console.log("longitude: " + stopToView[0].longitude);
                     this.navCtrl.push(ViewBusStopPage, {stopid: stopid, fullname: stopToView[0].fullname, operators: stopToView[0].operators[0].routes, latitude: stopToView[0].latitude, longitude: stopToView[0].longitude});
-                   // this.navCtrl.push(ViewBusStopPage, {fullname: marker.get('title'), stopid: marker.get('stopid'), operators: marker.get('operators'), latitude: marker.get('latitude'), longitude: marker.get('longitude')});
             });
 
         })
